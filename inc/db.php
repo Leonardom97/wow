@@ -3,9 +3,16 @@
 require_once('settings.php');
 require_once('security.php');
 
+// Validate port number to prevent DSN injection
+$port = $config['PORT'] ?? '5432';
+if (!ctype_digit((string)$port) || $port < 1 || $port > 65535) {
+    LogSecurityEvent('INVALID_PORT_CONFIG', 'Port must be numeric between 1-65535');
+    die('Invalid database configuration. Please contact administrator.');
+}
+
 try
 {
-    $con = new PDO('mysql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';charset=UTF8', 
+    $con = new PDO('pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';port=' . $port, 
                    $config['USER'], 
                    $config['PASS'],
                    [
