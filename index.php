@@ -8,14 +8,14 @@ $csrf_token = GenerateCSRFToken();
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>World of Warcraft - Cataclysm Registration</title>
-	<meta name="description" content="Join our World of Warcraft Cataclysm private server. Create your account and start your epic adventure!">
-	<meta name="keywords" content="world of warcraft, cataclysm, private server, wow, registration">
+	<title>World of Warcraft - Registro de Cataclysm</title>
+	<meta name="description" content="Únete a nuestro servidor privado de World of Warcraft Cataclysm. ¡Crea tu cuenta y comienza tu aventura épica!">
+	<meta name="keywords" content="world of warcraft, cataclysm, servidor privado, wow, registro">
 	
 	<!-- Favicon -->
 	<link rel="icon" type="image/x-icon" href="img/favicon.ico">
@@ -46,7 +46,7 @@ $csrf_token = GenerateCSRFToken();
 
 		<div class="content-box">
 			<div class="content-box-header">
-				<h2>Create Your Account</h2>
+				<h2>Crea tu Cuenta</h2>
 			</div>
 			<div class="content-box-content">
 				<form method="POST" id="registrationForm" autocomplete="off">
@@ -56,26 +56,26 @@ $csrf_token = GenerateCSRFToken();
 					<!-- Honeypot field (hidden from users, bots will fill it) -->
 					<input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
 					
-					<label class="orange">Username</label>
-					<input type="text" name="username" required minlength="3" maxlength="32" pattern="[A-Za-z0-9]+" title="Username must be 3-32 alphanumeric characters" autocomplete="username" />
+					<label class="orange">Usuario</label>
+					<input type="text" name="username" required minlength="3" maxlength="32" pattern="[A-Za-z0-9]+" title="El usuario debe tener entre 3 y 32 caracteres alfanuméricos" autocomplete="username" />
 
-					<label class="orange">Email</label>
+					<label class="orange">Correo Electrónico</label>
 					<input type="email" name="email" required maxlength="255" autocomplete="email" />
 
-					<label class="orange">Password</label>
+					<label class="orange">Contraseña</label>
 					<input type="password" name="password" required minlength="8" maxlength="72" autocomplete="new-password" />
 					<div class="password-requirements">
-						<small>Password must contain: uppercase, lowercase, and number (min 8 characters)</small>
+						<small>La contraseña debe contener: mayúsculas, minúsculas y números (mínimo 8 caracteres)</small>
 					</div>
 
-					<label class="orange">Confirm Password</label>
+					<label class="orange">Confirmar Contraseña</label>
 					<input type="password" name="re-password" required minlength="8" maxlength="72" autocomplete="new-password" />
 
 					<center>
 						<div class="g-recaptcha" data-sitekey="<?php echo htmlspecialchars(CAPTCHA_CLIENT_ID, ENT_QUOTES, 'UTF-8'); ?>"></div>
 						<br>
 						<button type="submit" name="register" class="small button">
-							<span class="button-text">Join the Battle</span>
+							<span class="button-text">Únete a la Batalla</span>
 						</button>
 					</center>
 				</form>
@@ -87,8 +87,8 @@ $csrf_token = GenerateCSRFToken();
 		</div>
 		
 		<div class="content-footer">
-			<p>World of Warcraft and all related trademarks are © Blizzard Entertainment.</p>
-			<p>This is a fan-made private server.</p>
+			<p>World of Warcraft y todas las marcas relacionadas son © Blizzard Entertainment.</p>
+			<p>Este es un servidor privado hecho por fans.</p>
 		</div>
 	</div>
 </div>
@@ -108,7 +108,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     
     if (password !== repassword) {
         e.preventDefault();
-        alert('Passwords do not match!');
+        alert('¡Las contraseñas no coinciden!');
         return false;
     }
     
@@ -119,7 +119,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     
     if (!hasUpperCase || !hasLowerCase || !hasNumber) {
         e.preventDefault();
-        alert('Password must contain at least one uppercase letter, one lowercase letter, and one number.');
+        alert('La contraseña debe contener al menos una letra mayúscula, una letra minúscula y un número.');
         return false;
     }
 });

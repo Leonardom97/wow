@@ -1,172 +1,172 @@
-# Security Checklist for Administrators
+# Lista de Verificación de Seguridad para Administradores
 
-Use this checklist to ensure your WoW registration system is properly secured.
+Usa esta lista de verificación para asegurar que tu sistema de registro de WoW esté correctamente asegurado.
 
-## Pre-Deployment Checklist
+## Lista de Verificación Pre-Despliegue
 
-### Configuration
-- [ ] `inc/settings.php` configured with correct database credentials
-- [ ] Google reCAPTCHA keys added (both site key and secret key)
-- [ ] Realmlist configured correctly
-- [ ] Expansion version set correctly (4 for Cataclysm)
-- [ ] Success message customized for your server
+### Configuración
+- [ ] `inc/settings.php` configurado con credenciales correctas de base de datos
+- [ ] Claves de Google reCAPTCHA agregadas (tanto clave del sitio como clave secreta)
+- [ ] Realmlist configurado correctamente
+- [ ] Versión de expansión establecida correctamente (4 para Cataclysm)
+- [ ] Mensaje de éxito personalizado para tu servidor
 
-### Security Setup
-- [ ] `logs/` directory created with write permissions (chmod 755)
-- [ ] `inc/settings.php` protected (chmod 600)
-- [ ] `.htaccess` file in place (Apache) or equivalent Nginx rules
-- [ ] HTTPS/SSL certificate installed
-- [ ] Session security enabled (`session.cookie_secure = 1` when using HTTPS)
+### Configuración de Seguridad
+- [ ] Directorio `logs/` creado con permisos de escritura (chmod 755)
+- [ ] `inc/settings.php` protegido (chmod 600)
+- [ ] Archivo `.htaccess` en su lugar (Apache) o reglas equivalentes de Nginx
+- [ ] Certificado HTTPS/SSL instalado
+- [ ] Seguridad de sesión habilitada (`session.cookie_secure = 1` cuando se usa HTTPS)
 
-### Testing
-- [ ] Test registration with valid data (should succeed)
-- [ ] Test registration with invalid username (should fail)
-- [ ] Test registration with invalid email (should fail)
-- [ ] Test registration with weak password (should fail)
-- [ ] Test registration without reCAPTCHA (should fail)
-- [ ] Test rate limiting (try 6 registrations quickly, 6th should fail)
-- [ ] Check `logs/security.log` for proper logging
-- [ ] Verify account created in database
-- [ ] Test on mobile device (responsive design)
+### Pruebas
+- [ ] Probar registro con datos válidos (debería tener éxito)
+- [ ] Probar registro con usuario inválido (debería fallar)
+- [ ] Probar registro con correo electrónico inválido (debería fallar)
+- [ ] Probar registro con contraseña débil (debería fallar)
+- [ ] Probar registro sin reCAPTCHA (debería fallar)
+- [ ] Probar limitación de tasa (intentar 6 registros rápidamente, el 6º debería fallar)
+- [ ] Verificar `logs/security.log` para registro adecuado
+- [ ] Verificar cuenta creada en base de datos
+- [ ] Probar en dispositivo móvil (diseño adaptable)
 
-### Web Server
-- [ ] PHP 7.4+ installed
-- [ ] MySQL 5.7+ installed
-- [ ] Required PHP extensions enabled (PDO, PDO_MySQL, session, json)
-- [ ] `display_errors = Off` in production
-- [ ] `log_errors = On` in production
-- [ ] Server signature hidden
-- [ ] Directory listing disabled
+### Servidor Web
+- [ ] PHP 7.4+ instalado
+- [ ] MySQL 5.7+ instalado
+- [ ] Extensiones PHP requeridas habilitadas (PDO, PDO_MySQL, session, json)
+- [ ] `display_errors = Off` en producción
+- [ ] `log_errors = On` en producción
+- [ ] Firma del servidor oculta
+- [ ] Listado de directorios deshabilitado
 
-## Post-Deployment Checklist
+## Lista de Verificación Post-Despliegue
 
-### Monitoring
-- [ ] Security logs reviewed daily (`logs/security.log`)
-- [ ] Database monitored for suspicious accounts
-- [ ] Server resources monitored (CPU, memory, connections)
-- [ ] Rate limiting effectiveness reviewed
-- [ ] Failed registration attempts analyzed
+### Monitoreo
+- [ ] Registros de seguridad revisados diariamente (`logs/security.log`)
+- [ ] Base de datos monitoreada para cuentas sospechosas
+- [ ] Recursos del servidor monitoreados (CPU, memoria, conexiones)
+- [ ] Efectividad de limitación de tasa revisada
+- [ ] Intentos de registro fallidos analizados
 
-### Maintenance
-- [ ] Log rotation configured (logs can grow large)
-- [ ] Regular backups of database
-- [ ] PHP and MySQL updates scheduled
-- [ ] Security advisory subscriptions active
-- [ ] Disposable email domains list updated periodically
+### Mantenimiento
+- [ ] Rotación de registros configurada (los registros pueden crecer mucho)
+- [ ] Respaldos regulares de base de datos
+- [ ] Actualizaciones de PHP y MySQL programadas
+- [ ] Suscripciones a avisos de seguridad activas
+- [ ] Lista de dominios de correo desechable actualizada periódicamente
 
-### Security Hardening
-- [ ] Firewall configured (allow only necessary ports)
-- [ ] fail2ban or similar installed (optional but recommended)
-- [ ] Database user has minimum required privileges only
-- [ ] Server time zone configured correctly
-- [ ] Regular security audits scheduled
+### Fortalecimiento de Seguridad
+- [ ] Firewall configurado (permitir solo puertos necesarios)
+- [ ] fail2ban o similar instalado (opcional pero recomendado)
+- [ ] Usuario de base de datos tiene solo privilegios mínimos requeridos
+- [ ] Zona horaria del servidor configurada correctamente
+- [ ] Auditorías de seguridad regulares programadas
 
-## Monthly Security Review
+## Revisión Mensual de Seguridad
 
-### Check These Items Monthly:
-- [ ] Review `logs/security.log` for unusual patterns
-- [ ] Update disposable email domains list if configured
-- [ ] Check for PHP and MySQL security updates
-- [ ] Review failed registration attempts
-- [ ] Verify HTTPS certificate is not expiring
-- [ ] Test registration system end-to-end
-- [ ] Review rate limiting settings (adjust if needed)
-- [ ] Check database for any suspicious accounts
-- [ ] Verify backup system is working
+### Verificar Estos Elementos Mensualmente:
+- [ ] Revisar `logs/security.log` para patrones inusuales
+- [ ] Actualizar lista de dominios de correo desechable si está configurada
+- [ ] Verificar actualizaciones de seguridad de PHP y MySQL
+- [ ] Revisar intentos de registro fallidos
+- [ ] Verificar que el certificado HTTPS no esté por expirar
+- [ ] Probar sistema de registro de extremo a extremo
+- [ ] Revisar configuración de limitación de tasa (ajustar si es necesario)
+- [ ] Verificar base de datos para cualquier cuenta sospechosa
+- [ ] Verificar que el sistema de respaldo esté funcionando
 
-## Incident Response
+## Respuesta a Incidentes
 
-### If You Detect a Security Issue:
+### Si Detectas un Problema de Seguridad:
 
-1. **Immediate Actions:**
-   - [ ] Review `logs/security.log` for details
-   - [ ] Block suspicious IP addresses at firewall level
-   - [ ] Check database for unauthorized accounts
-   - [ ] Verify no data has been exfiltrated
+1. **Acciones Inmediatas:**
+   - [ ] Revisar `logs/security.log` para detalles
+   - [ ] Bloquear direcciones IP sospechosas a nivel de firewall
+   - [ ] Verificar base de datos para cuentas no autorizadas
+   - [ ] Verificar que no se hayan exfiltrado datos
 
-2. **Investigation:**
-   - [ ] Identify the attack vector
-   - [ ] Determine scope of compromise
-   - [ ] Check for any modified files
-   - [ ] Review web server access logs
+2. **Investigación:**
+   - [ ] Identificar el vector de ataque
+   - [ ] Determinar alcance del compromiso
+   - [ ] Verificar archivos modificados
+   - [ ] Revisar registros de acceso del servidor web
 
-3. **Remediation:**
-   - [ ] Patch the vulnerability
-   - [ ] Change database credentials
-   - [ ] Update reCAPTCHA keys
-   - [ ] Remove any malicious accounts
-   - [ ] Notify affected users if needed
+3. **Remediación:**
+   - [ ] Parchear la vulnerabilidad
+   - [ ] Cambiar credenciales de base de datos
+   - [ ] Actualizar claves de reCAPTCHA
+   - [ ] Eliminar cualquier cuenta maliciosa
+   - [ ] Notificar a usuarios afectados si es necesario
 
-4. **Prevention:**
-   - [ ] Update security measures
-   - [ ] Add additional logging
-   - [ ] Implement additional firewall rules
-   - [ ] Schedule more frequent security reviews
+4. **Prevención:**
+   - [ ] Actualizar medidas de seguridad
+   - [ ] Agregar registro adicional
+   - [ ] Implementar reglas de firewall adicionales
+   - [ ] Programar revisiones de seguridad más frecuentes
 
-## Performance Optimization
+## Optimización de Rendimiento
 
-### If Registration is Slow:
-- [ ] Check database indexes (username and email should be indexed)
-- [ ] Verify adequate server resources
-- [ ] Consider CDN for static assets
-- [ ] Enable opcode caching (OPcache)
-- [ ] Optimize database queries
-- [ ] Check network latency to reCAPTCHA servers
+### Si el Registro es Lento:
+- [ ] Verificar índices de base de datos (usuario y correo deben estar indexados)
+- [ ] Verificar recursos adecuados del servidor
+- [ ] Considerar CDN para recursos estáticos
+- [ ] Habilitar caché de opcode (OPcache)
+- [ ] Optimizar consultas de base de datos
+- [ ] Verificar latencia de red a servidores de reCAPTCHA
 
-## Common Issues & Solutions
+## Problemas Comunes y Soluciones
 
-### Issue: "Too many attempts" error
-- **Solution:** User needs to wait 5 minutes, or adjust rate limit in `inc/functions.php`
+### Problema: Error "Demasiados intentos"
+- **Solución:** El usuario necesita esperar 5 minutos, o ajustar límite de tasa en `inc/functions.php`
 
-### Issue: reCAPTCHA not appearing
-- **Solution:** Check reCAPTCHA site key, verify domain is registered, ensure JavaScript is enabled
+### Problema: reCAPTCHA no aparece
+- **Solución:** Verificar clave del sitio de reCAPTCHA, verificar que el dominio esté registrado, asegurar que JavaScript esté habilitado
 
-### Issue: Database connection failed
-- **Solution:** Verify credentials, check MySQL is running, ensure user has permissions
+### Problema: Falló la conexión a base de datos
+- **Solución:** Verificar credenciales, verificar que MySQL esté ejecutándose, asegurar que el usuario tenga permisos
 
-### Issue: Logs not being created
-- **Solution:** Create `logs/` directory, set write permissions (chmod 755)
+### Problema: No se están creando registros
+- **Solución:** Crear directorio `logs/`, establecer permisos de escritura (chmod 755)
 
-### Issue: Rate limiting too strict
-- **Solution:** Adjust parameters in `inc/functions.php` line 12: `CheckRateLimit($ip_address, 5, 300)`
+### Problema: Limitación de tasa demasiado estricta
+- **Solución:** Ajustar parámetros en `inc/functions.php` línea 12: `CheckRateLimit($ip_address, 5, 300)`
 
-## Recommended Tools
+## Herramientas Recomendadas
 
-### Monitoring
-- **Fail2ban:** Automatic IP banning for suspicious activity
-- **Monit:** Server monitoring and alerting
-- **Logwatch:** Daily email summaries of log files
-- **New Relic/DataDog:** Application performance monitoring
+### Monitoreo
+- **Fail2ban:** Bloqueo automático de IP para actividad sospechosa
+- **Monit:** Monitoreo y alertas del servidor
+- **Logwatch:** Resúmenes diarios por correo de archivos de registro
+- **New Relic/DataDog:** Monitoreo de rendimiento de aplicaciones
 
-### Security
+### Seguridad
 - **ModSecurity:** Web Application Firewall (WAF)
-- **Cloudflare:** DDoS protection and CDN
-- **Let's Encrypt:** Free SSL certificates
-- **Qualys SSL Labs:** Test SSL configuration
+- **Cloudflare:** Protección DDoS y CDN
+- **Let's Encrypt:** Certificados SSL gratuitos
+- **Qualys SSL Labs:** Probar configuración SSL
 
-### Backup
-- **mysqldump:** Database backups
-- **rsync:** File backups
-- **BorgBackup:** Encrypted, deduplicated backups
-- **AWS S3/Backblaze B2:** Off-site backup storage
+### Respaldo
+- **mysqldump:** Respaldos de base de datos
+- **rsync:** Respaldos de archivos
+- **BorgBackup:** Respaldos cifrados y deduplicados
+- **AWS S3/Backblaze B2:** Almacenamiento de respaldo fuera del sitio
 
-## Contact & Support
+## Contacto y Soporte
 
-### Resources
-- Read `SECURITY_README.md` for detailed security documentation
-- View `SETUP_GUIDE.md` for setup instructions
-- Check `security-info.html` for visual security guide
-- Review `COMPARISON.md` for feature comparison
+### Recursos
+- Leer `SECURITY_README.md` para documentación detallada de seguridad
+- Ver `SETUP_GUIDE.md` para instrucciones de configuración
+- Verificar `security-info.html` para guía visual de seguridad
+- Revisar `COMPARISON.md` para comparación de características
 
-### Getting Help
-1. Check security logs: `logs/security.log`
-2. Review documentation files
-3. Test in development environment first
-4. Check PHP error logs
-5. Verify all configuration settings
+### Obtener Ayuda
+1. Verificar registros de seguridad: `logs/security.log`
+2. Revisar archivos de documentación
+3. Probar primero en ambiente de desarrollo
+4. Verificar registros de errores de PHP
+5. Verificar todas las configuraciones
 
 ---
 
-**Remember:** Security is an ongoing process, not a one-time setup. Regular monitoring and updates are essential!
+**Recuerda:** ¡La seguridad es un proceso continuo, no una configuración única! ¡El monitoreo y las actualizaciones regulares son esenciales!
 
-**Last Updated:** Check your git commit date for the latest version of this checklist.
+**Última Actualización:** Verifica la fecha de tu commit de git para la versión más reciente de esta lista.

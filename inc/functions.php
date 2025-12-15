@@ -14,28 +14,28 @@ function Register()
 		// Check rate limiting (5 attempts per 5 minutes)
 		if (!CheckRateLimit($ip_address, 5, 300)) {
 			LogSecurityEvent('RATE_LIMIT_EXCEEDED', 'Registration attempt blocked');
-			echo '<div class="callout alert">Too many attempts. Please try again later.</div>';
+			echo '<div class="callout alert">Demasiados intentos. Por favor, inténtalo de nuevo más tarde.</div>';
 			return;
 		}
 		
 		// Validate CSRF token
 		if (!isset($_POST['csrf_token']) || !ValidateCSRFToken($_POST['csrf_token'])) {
 			LogSecurityEvent('CSRF_VALIDATION_FAILED', 'Invalid or missing CSRF token');
-			echo '<div class="callout alert">Security validation failed. Please refresh the page and try again.</div>';
+			echo '<div class="callout alert">Falló la validación de seguridad. Por favor, actualiza la página e inténtalo de nuevo.</div>';
 			return;
 		}
 		
 		// Check honeypot field (bot detection)
 		if (!CheckHoneypot($_POST['website'] ?? '')) {
 			LogSecurityEvent('HONEYPOT_TRIGGERED', 'Bot detected via honeypot field');
-			echo '<div class="callout alert">Registration failed. Please try again.</div>';
+			echo '<div class="callout alert">Falló el registro. Por favor, inténtalo de nuevo.</div>';
 			return;
 		}
 		
 		// Check if all required fields are present and not empty
 		if(empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password']) || empty($_POST['re-password']))
 		{
-			echo '<div class="callout alert">All fields are required!</div>';
+			echo '<div class="callout alert">¡Todos los campos son obligatorios!</div>';
 			return;
 		}
 		
@@ -51,14 +51,14 @@ function Register()
 		// Validate username
 		if(!ValidateUsername($username))
 		{
-			echo '<div class="callout alert">Username must be 3-32 alphanumeric characters!</div>';
+			echo '<div class="callout alert">¡El usuario debe tener entre 3 y 32 caracteres alfanuméricos!</div>';
 			return;
 		}
 		
 		// Validate email
 		if(!ValidateEmail($email))
 		{
-			echo '<div class="callout alert">Please provide a valid email address!</div>';
+			echo '<div class="callout alert">¡Por favor, proporciona una dirección de correo electrónico válida!</div>';
 			return;
 		}
 		
@@ -73,7 +73,7 @@ function Register()
 		// Check if passwords match
 		if($password !== $repassword)
 		{
-			echo '<div class="callout alert">Passwords do not match!</div>';
+			echo '<div class="callout alert">¡Las contraseñas no coinciden!</div>';
 			return;
 		}
 		
@@ -81,7 +81,7 @@ function Register()
 		if(!VerifyCaptcha($secret, $captcha, $ip_address))
 		{
 			LogSecurityEvent('CAPTCHA_FAILED', 'User: ' . $username);
-			echo '<div class="callout alert">Captcha verification failed. Please try again.</div>';
+			echo '<div class="callout alert">Falló la verificación del captcha. Por favor, inténtalo de nuevo.</div>';
 			return;
 		}
 		
@@ -95,7 +95,7 @@ function Register()
 			
 			if($stmt->fetchColumn() > 0)
 			{
-				echo '<div class="callout alert">Username or Email is already in use!</div>';
+				echo '<div class="callout alert">¡El usuario o correo electrónico ya está en uso!</div>';
 				return;
 			}
 			
@@ -116,11 +116,11 @@ function Register()
 			
 			LogSecurityEvent('REGISTRATION_SUCCESS', 'User: ' . $username);
 			echo '<div class="callout success">' . SanitizeInput(SUCCESS_MESSAGE) . '</div>';
-			echo '<div class="callout warning">Realmlist: ' . SanitizeInput(REALMLIST) . '</div>';
+			echo '<div class="callout warning">Lista de Reinos: ' . SanitizeInput(REALMLIST) . '</div>';
 			
 		} catch (PDOException $e) {
 			LogSecurityEvent('DATABASE_ERROR', 'Registration failed for user: ' . $username);
-			echo '<div class="callout alert">Registration failed. Please try again later.</div>';
+			echo '<div class="callout alert">Falló el registro. Por favor, inténtalo de nuevo más tarde.</div>';
 		}
 	}
 }

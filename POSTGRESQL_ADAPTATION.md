@@ -32,7 +32,7 @@ $con = new PDO('pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';
 ### 2. `inc/settings.template.php`
 **Changes:**
 - Updated default user from `root` to `postgres`
-- Added PORT configuration with default 5432
+- Configuración PORT agregada with default 5432
 - Updated comments to reflect PostgreSQL as primary database
 
 **New Configuration:**
@@ -49,9 +49,9 @@ $config = array(
 
 ### 3. `SETUP_GUIDE.md`
 **Changes:**
-- Added PostgreSQL schema as primary option
+- Esquema PostgreSQL agregado as primary option
 - Kept MySQL schema for backward compatibility
-- Updated troubleshooting section for both databases
+- Solución de problemas actualizada section for both databases
 - Added port configuration instructions
 
 **PostgreSQL Schema Added:**
@@ -68,11 +68,11 @@ CREATE TABLE account (
 
 ### 4. `README.md`
 **Changes:**
-- Updated requirements section: "PostgreSQL 12+ (recommended) or MySQL 5.7+"
+- Requisitos actualizados section: "PostgreSQL 12+ (recommended) or MySQL 5.7+"
 - Updated database setup instructions to mention both databases
-- Updated troubleshooting to include PostgreSQL
+- Solución de problemas actualizada to include PostgreSQL
 
-## Files Created
+## Files Creado
 
 ### 5. `POSTGRESQL_MIGRATION.md` (NEW)
 Comprehensive migration guide covering:
@@ -148,7 +148,7 @@ All security features remain intact:
 
 ## Testing Recommendations
 
-### 1. Test Database Connection
+### 1. Test Conexión a Base de Datos
 ```bash
 php test_pgsql_connection.php
 ```
@@ -181,12 +181,12 @@ php test_pgsql_connection.php
 1. **Option A**: Keep using MySQL (no changes needed to existing installations)
 2. **Option B**: Migrate to PostgreSQL using POSTGRESQL_MIGRATION.md guide
 
-## Documentation Structure
+## Documentación Structure
 
 ```
 wow/
 ├── README.md                       ← Updated with PostgreSQL requirements
-├── SETUP_GUIDE.md                  ← Added PostgreSQL schema
+├── SETUP_GUIDE.md                  ← Esquema PostgreSQL agregado
 ├── POSTGRESQL_MIGRATION.md         ← NEW: Complete migration guide
 ├── POSTGRESQL_ADAPTATION.md        ← NEW: This summary
 ├── test_pgsql_connection.php       ← NEW: Connection test script
@@ -233,7 +233,7 @@ sudo yum install php-pgsql
 ## Support Resources
 
 - **Migration Guide**: See POSTGRESQL_MIGRATION.md
-- **Setup Guide**: See SETUP_GUIDE.md
+- **Guía de Configuración**: See SETUP_GUIDE.md
 - **Test Script**: Run test_pgsql_connection.php
 - **Security Docs**: See SECURITY_README.md
 

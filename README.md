@@ -1,268 +1,268 @@
-# 🎮 World of Warcraft: Cataclysm - Secure Registration System
+# 🎮 World of Warcraft: Cataclysm - Sistema de Registro Seguro
 
-[![Security Grade](https://img.shields.io/badge/Security-A+-brightgreen)](SECURITY_README.md)
+[![Calificación de Seguridad](https://img.shields.io/badge/Seguridad-A+-brightgreen)](SECURITY_README.md)
 [![PHP](https://img.shields.io/badge/PHP-7.4%2B-blue)](https://php.net)
-[![License](https://img.shields.io/badge/License-Fan_Project-orange)](LICENSE)
+[![Licencia](https://img.shields.io/badge/Licencia-Proyecto_Fan-orange)](LICENSE)
 
-A **production-ready, enterprise-grade secure registration system** for World of Warcraft Cataclysm private servers with comprehensive protection against all major web vulnerabilities and an epic game-inspired design.
+Un **sistema de registro seguro de grado empresarial listo para producción** para servidores privados de World of Warcraft Cataclysm con protección integral contra todas las principales vulnerabilidades web y un diseño épico inspirado en el juego.
 
-![Preview](https://puu.sh/xwIms/233d6cc51f.jpg)
+![Vista Previa](https://puu.sh/xwIms/233d6cc51f.jpg)
 
-## ✨ Features
+## ✨ Características
 
-### 🛡️ Security (A+ Grade)
-- ✅ **SQL Injection Protection** - PDO prepared statements
-- ✅ **XSS Protection** - Input/output sanitization
-- ✅ **CSRF Protection** - Time-limited tokens
-- ✅ **DDoS & Brute Force Protection** - Rate limiting (5/5min)
-- ✅ **Bot Prevention** - reCAPTCHA v2 + Honeypot trap
-- ✅ **Session Security** - HttpOnly, Secure, SameSite
-- ✅ **Password Strength Requirements** - 8+ chars, mixed case
-- ✅ **Security Headers** - CSP, X-Frame-Options, etc.
-- ✅ **Security Logging** - All events tracked with IP
-- ✅ **10+ Attack Vectors Protected**
+### 🛡️ Seguridad (Calificación A+)
+- ✅ **Protección contra Inyección SQL** - Declaraciones preparadas PDO
+- ✅ **Protección XSS** - Sanitización de entrada/salida
+- ✅ **Protección CSRF** - Tokens con límite de tiempo
+- ✅ **Protección DDoS y Fuerza Bruta** - Limitación de tasa (5/5min)
+- ✅ **Prevención de Bots** - reCAPTCHA v2 + Trampa honeypot
+- ✅ **Seguridad de Sesión** - HttpOnly, Secure, SameSite
+- ✅ **Requisitos de Fortaleza de Contraseña** - 8+ caracteres, mayúsculas/minúsculas
+- ✅ **Cabeceras de Seguridad** - CSP, X-Frame-Options, etc.
+- ✅ **Registro de Seguridad** - Todos los eventos rastreados con IP
+- ✅ **Más de 10 Vectores de Ataque Protegidos**
 
-### 🎨 Design (Cataclysm Theme)
-- 🔥 Epic World of Warcraft Cataclysm aesthetic
-- ✨ Golden glow effects and fire-themed colors
-- 🎭 Premium WoW-style fonts (Cinzel, Spectral SC)
-- 💫 Smooth animations and visual effects
-- 📱 Fully responsive (mobile to 4K)
-- 🎯 Real-time password strength indicator
-- ⚡ Interactive UI with visual feedback
+### 🎨 Diseño (Tema Cataclysm)
+- 🔥 Estética épica de World of Warcraft Cataclysm
+- ✨ Efectos de brillo dorado y colores de fuego
+- 🎭 Fuentes premium estilo WoW (Cinzel, Spectral SC)
+- 💫 Animaciones suaves y efectos visuales
+- 📱 Completamente adaptable (móvil a 4K)
+- 🎯 Indicador de fortaleza de contraseña en tiempo real
+- ⚡ Interfaz interactiva con retroalimentación visual
 
-### 📚 Documentation
-- 📖 [**SECURITY_README.md**](SECURITY_README.md) - Complete security documentation
-- 🚀 [**SETUP_GUIDE.md**](SETUP_GUIDE.md) - Quick setup instructions
-- 📊 [**COMPARISON.md**](COMPARISON.md) - Before/after comparison
-- ✅ [**SECURITY_CHECKLIST.md**](SECURITY_CHECKLIST.md) - Admin checklist
-- 📋 [**IMPLEMENTATION_SUMMARY.md**](IMPLEMENTATION_SUMMARY.md) - Full implementation details
-- 🎯 [**security-info.html**](security-info.html) - Visual security guide
+### 📚 Documentación
+- 📖 [**SECURITY_README.md**](SECURITY_README.md) - Documentación completa de seguridad
+- 🚀 [**SETUP_GUIDE.md**](SETUP_GUIDE.md) - Instrucciones rápidas de configuración
+- 📊 [**COMPARISON.md**](COMPARISON.md) - Comparación antes/después
+- ✅ [**SECURITY_CHECKLIST.md**](SECURITY_CHECKLIST.md) - Lista de verificación para administradores
+- 📋 [**IMPLEMENTATION_SUMMARY.md**](IMPLEMENTATION_SUMMARY.md) - Detalles completos de implementación
+- 🎯 [**security-info.html**](security-info.html) - Guía visual de seguridad
 
-## 🚀 Quick Start
+## 🚀 Inicio Rápido
 
 ```bash
-# 1. Clone the repository
+# 1. Clonar el repositorio
 git clone <repository-url>
 cd wow
 
-# 2. Copy settings template
+# 2. Copiar plantilla de configuración
 cp inc/settings.template.php inc/settings.php
 
-# 3. Edit configuration
+# 3. Editar configuración
 nano inc/settings.php
-# - Add database credentials
-# - Add reCAPTCHA keys from https://www.google.com/recaptcha/admin
-# - Set realmlist and expansion
+# - Agregar credenciales de base de datos
+# - Agregar claves reCAPTCHA desde https://www.google.com/recaptcha/admin
+# - Configurar realmlist y expansión
 
-# 4. Create logs directory
+# 4. Crear directorio de registros
 mkdir logs && chmod 755 logs
 
-# 5. Set secure permissions
+# 5. Establecer permisos seguros
 chmod 600 inc/settings.php
 
-# 6. Configure web server (Apache/Nginx)
-# See SETUP_GUIDE.md for detailed instructions
+# 6. Configurar servidor web (Apache/Nginx)
+# Ver SETUP_GUIDE.md para instrucciones detalladas
 
-# 7. Test the installation
+# 7. Probar la instalación
 php -l index.php
 ```
 
-## 🔒 Security Features
+## 🔒 Características de Seguridad
 
-| Protection | Status | Implementation |
+| Protección | Estado | Implementación |
 |------------|--------|----------------|
-| SQL Injection | ✅ | PDO prepared statements |
-| XSS | ✅ | Input sanitization + output encoding |
-| CSRF | ✅ | Time-limited tokens (1hr) |
-| DDoS | ✅ | Rate limiting + throttling |
-| Brute Force | ✅ | Multi-layer (rate limit + CAPTCHA) |
+| Inyección SQL | ✅ | Declaraciones preparadas PDO |
+| XSS | ✅ | Sanitización de entrada + codificación de salida |
+| CSRF | ✅ | Tokens con límite de tiempo (1hr) |
+| DDoS | ✅ | Limitación de tasa + throttling |
+| Fuerza Bruta | ✅ | Multicapa (limitación de tasa + CAPTCHA) |
 | Bots | ✅ | reCAPTCHA v2 + honeypot |
-| Session Hijacking | ✅ | Secure session management |
-| Session Fixation | ✅ | Session regeneration |
-| Clickjacking | ✅ | X-Frame-Options header |
-| MIME Sniffing | ✅ | X-Content-Type-Options |
+| Secuestro de Sesión | ✅ | Gestión segura de sesiones |
+| Fijación de Sesión | ✅ | Regeneración de sesión |
+| Clickjacking | ✅ | Cabecera X-Frame-Options |
+| Sniffing MIME | ✅ | X-Content-Type-Options |
 
-**Security Score: A+** (Industry-standard comprehensive protection)
+**Puntuación de Seguridad: A+** (Protección integral de estándar de la industria)
 
-## 📋 Requirements
+## 📋 Requisitos
 
-- **PHP**: 7.4 or higher (tested on 8.3)
-- **Database**: PostgreSQL 12+ (recommended) or MySQL 5.7+
-- **Web Server**: Apache (with mod_rewrite) or Nginx
-- **SSL Certificate**: Recommended for production
-- **Google reCAPTCHA**: v2 keys required
+- **PHP**: 7.4 o superior (probado en 8.3)
+- **Base de Datos**: PostgreSQL 12+ (recomendado) o MySQL 5.7+
+- **Servidor Web**: Apache (con mod_rewrite) o Nginx
+- **Certificado SSL**: Recomendado para producción
+- **Google reCAPTCHA**: Claves v2 requeridas
 
-## 📁 Project Structure
+## 📁 Estructura del Proyecto
 
 ```
 wow/
 ├── inc/
-│   ├── security.php          ← Security utilities (13 functions)
-│   ├── functions.php         ← Registration logic
-│   ├── db.php                ← Secure database connection
-│   ├── settings.php          ← Configuration
-│   └── settings.template.php ← Configuration template
+│   ├── security.php          ← Utilidades de seguridad (13 funciones)
+│   ├── functions.php         ← Lógica de registro
+│   ├── db.php                ← Conexión segura a base de datos
+│   ├── settings.php          ← Configuración
+│   └── settings.template.php ← Plantilla de configuración
 ├── css/
-│   └── content.css           ← Cataclysm theme styling
+│   └── content.css           ← Estilos del tema Cataclysm
 ├── js/
-│   └── app.js                ← Client-side validation
+│   └── app.js                ← Validación del lado del cliente
 ├── logs/
-│   └── security.log          ← Security event logs
-├── index.php                 ← Main registration page
-└── Documentation files       ← 6 comprehensive guides
+│   └── security.log          ← Registros de eventos de seguridad
+├── index.php                 ← Página principal de registro
+└── Archivos de documentación ← 6 guías completas
 ```
 
-## 🎯 What's Protected
+## 🎯 Qué está Protegido
 
-This system protects against:
+Este sistema protege contra:
 
-- **SQL Injection** - Database attacks
-- **XSS** - JavaScript injection
-- **CSRF** - Form hijacking
-- **DDoS** - Service disruption
-- **Brute Force** - Password guessing
-- **Bot Attacks** - Automated registration
-- **Session Attacks** - Session theft/fixation
-- **Clickjacking** - UI redressing
-- **Data Exposure** - Information leakage
-- **MIME Attacks** - File type confusion
+- **Inyección SQL** - Ataques a la base de datos
+- **XSS** - Inyección de JavaScript
+- **CSRF** - Secuestro de formularios
+- **DDoS** - Interrupción del servicio
+- **Fuerza Bruta** - Adivinación de contraseñas
+- **Ataques de Bots** - Registro automatizado
+- **Ataques de Sesión** - Robo/fijación de sesión
+- **Clickjacking** - Redressing de UI
+- **Exposición de Datos** - Fuga de información
+- **Ataques MIME** - Confusión de tipo de archivo
 
-## 🎨 Design Showcase
+## 🎨 Muestra del Diseño
 
-### Color Palette
-- **Primary**: Gold (#FFD700) - Epic tier items
-- **Secondary**: Fire Orange (#FF8C00) - Cataclysm theme
-- **Accent**: Red-Orange (#FF4500) - Destruction
-- **Background**: Dark browns/blacks - Immersive atmosphere
+### Paleta de Colores
+- **Primario**: Dorado (#FFD700) - Objetos de nivel épico
+- **Secundario**: Naranja Fuego (#FF8C00) - Tema Cataclysm
+- **Acento**: Rojo-Naranja (#FF4500) - Destrucción
+- **Fondo**: Marrones/negros oscuros - Atmósfera inmersiva
 
-### Typography
-- **Cinzel** - WoW-style serif for titles
-- **Spectral SC** - Small caps for emphasis
-- Golden glow effects on text
-- Professional game-inspired layout
+### Tipografía
+- **Cinzel** - Serif estilo WoW para títulos
+- **Spectral SC** - Versalitas para énfasis
+- Efectos de brillo dorado en el texto
+- Diseño profesional inspirado en el juego
 
-## 📊 Statistics
+## 📊 Estadísticas
 
-- **Security Functions**: 13
-- **Lines of Security Code**: 300+
-- **Protections Implemented**: 10+
-- **Documentation Pages**: 6
-- **Security Grade**: A+
-- **Files Modified/Created**: 14
-- **Total Lines Added**: 2000+
+- **Funciones de Seguridad**: 13
+- **Líneas de Código de Seguridad**: 300+
+- **Protecciones Implementadas**: 10+
+- **Páginas de Documentación**: 6
+- **Calificación de Seguridad**: A+
+- **Archivos Modificados/Creados**: 14
+- **Total de Líneas Agregadas**: 2000+
 
-## 🔧 Configuration
+## 🔧 Configuración
 
-### Database Setup
-1. Create PostgreSQL (or MySQL) database (typically named `auth`)
-2. Ensure `account` table exists with proper schema
-3. Configure credentials in `inc/settings.php`
+### Configuración de Base de Datos
+1. Crear base de datos PostgreSQL (o MySQL) (típicamente llamada `auth`)
+2. Asegurar que existe la tabla `account` con el esquema adecuado
+3. Configurar credenciales en `inc/settings.php`
 
-### reCAPTCHA Setup
-1. Visit https://www.google.com/recaptcha/admin
-2. Register new site (reCAPTCHA v2 - Checkbox)
-3. Add your domain
-4. Copy keys to `inc/settings.php`
+### Configuración de reCAPTCHA
+1. Visitar https://www.google.com/recaptcha/admin
+2. Registrar nuevo sitio (reCAPTCHA v2 - Casilla de verificación)
+3. Agregar tu dominio
+4. Copiar claves a `inc/settings.php`
 
-### Production Deployment
-- Enable HTTPS/SSL
-- Set `session.cookie_secure = 1`
-- Configure firewall rules
-- Set up log rotation
-- Monitor `logs/security.log`
-- Regular security reviews
+### Despliegue en Producción
+- Habilitar HTTPS/SSL
+- Establecer `session.cookie_secure = 1`
+- Configurar reglas de firewall
+- Configurar rotación de registros
+- Monitorear `logs/security.log`
+- Revisiones de seguridad regulares
 
-See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed instructions.
+Ver [SETUP_GUIDE.md](SETUP_GUIDE.md) para instrucciones detalladas.
 
-## 📖 Documentation
+## 📖 Documentación
 
-| Document | Description | Size |
-|----------|-------------|------|
-| [SECURITY_README.md](SECURITY_README.md) | Complete security documentation | 6.7KB |
-| [SETUP_GUIDE.md](SETUP_GUIDE.md) | Step-by-step setup instructions | 3.6KB |
-| [COMPARISON.md](COMPARISON.md) | Before/after feature comparison | 6.9KB |
-| [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md) | Administrator security checklist | 6.0KB |
-| [IMPLEMENTATION_SUMMARY.md](IMPLEMENTATION_SUMMARY.md) | Complete implementation details | 12KB |
-| [security-info.html](security-info.html) | Visual security features guide | 15KB |
+| Documento | Descripción | Tamaño |
+|----------|-------------|--------|
+| [SECURITY_README.md](SECURITY_README.md) | Documentación completa de seguridad | 6.7KB |
+| [SETUP_GUIDE.md](SETUP_GUIDE.md) | Instrucciones de configuración paso a paso | 3.6KB |
+| [COMPARISON.md](COMPARISON.md) | Comparación de características antes/después | 6.9KB |
+| [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md) | Lista de verificación de seguridad para administradores | 6.0KB |
+| [IMPLEMENTATION_SUMMARY.md](IMPLEMENTATION_SUMMARY.md) | Detalles completos de implementación | 12KB |
+| [security-info.html](security-info.html) | Guía visual de características de seguridad | 15KB |
 
-## 🆘 Troubleshooting
+## 🆘 Solución de Problemas
 
-### Common Issues
+### Problemas Comunes
 
-**"Unable to connect to database"**
-- Check credentials in `inc/settings.php`
-- Verify PostgreSQL/MySQL is running
-- Ensure database exists
+**"No se puede conectar a la base de datos"**
+- Verificar credenciales en `inc/settings.php`
+- Verificar que PostgreSQL/MySQL esté ejecutándose
+- Asegurar que la base de datos existe
 
-**"Captcha verification failed"**
-- Verify reCAPTCHA keys are correct
-- Check domain registration
-- Ensure JavaScript is enabled
+**"Falló la verificación del captcha"**
+- Verificar que las claves de reCAPTCHA son correctas
+- Verificar el registro del dominio
+- Asegurar que JavaScript está habilitado
 
-**"Too many attempts"**
-- Rate limit triggered
-- Wait 5 minutes or clear session
-- Adjust in `inc/functions.php` if needed
+**"Demasiados intentos"**
+- Límite de tasa activado
+- Esperar 5 minutos o limpiar sesión
+- Ajustar en `inc/functions.php` si es necesario
 
-**Logs not being created**
-- Create `logs/` directory
-- Set permissions: `chmod 755 logs`
+**No se están creando registros**
+- Crear directorio `logs/`
+- Establecer permisos: `chmod 755 logs`
 
-See [SETUP_GUIDE.md](SETUP_GUIDE.md) for more solutions.
+Ver [SETUP_GUIDE.md](SETUP_GUIDE.md) para más soluciones.
 
-## 🤝 Contributing
+## 🤝 Contribuir
 
-This is a private server registration system for World of Warcraft Cataclysm. Contributions are welcome:
+Este es un sistema de registro para servidores privados de World of Warcraft Cataclysm. Las contribuciones son bienvenidas:
 
-1. Fork the repository
-2. Create a feature branch
-3. Test your changes thoroughly
-4. Submit a pull request
+1. Hacer fork del repositorio
+2. Crear una rama de característica
+3. Probar tus cambios exhaustivamente
+4. Enviar un pull request
 
-## 📜 License
+## 📜 Licencia
 
-This is a fan-made project. **World of Warcraft** and all related trademarks are © **Blizzard Entertainment**.
+Este es un proyecto hecho por fans. **World of Warcraft** y todas las marcas relacionadas son © **Blizzard Entertainment**.
 
-## 🎓 Credits
+## 🎓 Créditos
 
-- **Design Inspiration**: World of Warcraft by Blizzard Entertainment
-- **Security Implementation**: Industry-standard best practices
+- **Inspiración del Diseño**: World of Warcraft por Blizzard Entertainment
+- **Implementación de Seguridad**: Mejores prácticas estándar de la industria
 - **reCAPTCHA**: Google
-- **Compatible With**: TrinityCore, AzerothCore, and similar emulators
+- **Compatible Con**: TrinityCore, AzerothCore y emuladores similares
 
-## 📞 Support
+## 📞 Soporte
 
-- **Documentation**: See guides listed above
-- **Security Logs**: Check `logs/security.log`
-- **Setup Help**: Read [SETUP_GUIDE.md](SETUP_GUIDE.md)
-- **Issues**: Check [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md)
+- **Documentación**: Ver guías listadas arriba
+- **Registros de Seguridad**: Verificar `logs/security.log`
+- **Ayuda de Configuración**: Leer [SETUP_GUIDE.md](SETUP_GUIDE.md)
+- **Problemas**: Verificar [SECURITY_CHECKLIST.md](SECURITY_CHECKLIST.md)
 
-## 🌟 Features at a Glance
+## 🌟 Características de un Vistazo
 
 ```
-Security:        ████████████████████ 100%  (A+ Grade)
-Design Quality:  ████████████████████ 100%  (Epic Theme)
-Documentation:   ████████████████████ 100%  (6 Guides)
-Code Quality:    ████████████████████ 100%  (Professional)
-User Experience: ████████████████████ 100%  (Interactive)
+Seguridad:           ████████████████████ 100%  (Calificación A+)
+Calidad de Diseño:   ████████████████████ 100%  (Tema Épico)
+Documentación:       ████████████████████ 100%  (6 Guías)
+Calidad de Código:   ████████████████████ 100%  (Profesional)
+Experiencia Usuario: ████████████████████ 100%  (Interactivo)
 ```
 
 ---
 
-## 🎮 Ready for Battle
+## 🎮 Listo para la Batalla
 
-This registration system is **production-ready** with:
-- ✅ Enterprise-grade security
-- ✅ Beautiful Cataclysm-themed design
-- ✅ Comprehensive documentation
-- ✅ Easy setup and maintenance
-- ✅ Professional code quality
+Este sistema de registro está **listo para producción** con:
+- ✅ Seguridad de grado empresarial
+- ✅ Hermoso diseño temático de Cataclysm
+- ✅ Documentación completa
+- ✅ Configuración y mantenimiento fáciles
+- ✅ Calidad de código profesional
 
-**Start your epic adventure today!**
+**¡Comienza tu aventura épica hoy!**
 
 ---
 
-*"The elements themselves turn against you. The earth shakes. The seas boil. The skies burn."*
+*"Los elementos mismos se vuelven contra ti. La tierra tiembla. Los mares hierven. Los cielos arden."*
 
-**World of Warcraft: Cataclysm** - Create your legend.
+**World of Warcraft: Cataclysm** - Crea tu leyenda.
