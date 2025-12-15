@@ -120,9 +120,15 @@ Create a test file `test_connection.php`:
 <?php
 require_once('inc/settings.php');
 
+// Validate port number to prevent DSN injection
+$port = $config['PORT'] ?? '5432';
+if (!ctype_digit((string)$port) || $port < 1 || $port > 65535) {
+    die("❌ Invalid port configuration\n");
+}
+
 try {
     $con = new PDO(
-        'pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';port=' . ($config['PORT'] ?? '5432'),
+        'pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';port=' . $port,
         $config['USER'],
         $config['PASS']
     );

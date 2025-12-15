@@ -21,6 +21,15 @@ if (!file_exists(__DIR__ . '/inc/settings.php')) {
 
 require_once(__DIR__ . '/inc/settings.php');
 
+// Validate port number to prevent DSN injection
+$port = $config['PORT'] ?? '5432';
+if (!ctype_digit((string)$port) || $port < 1 || $port > 65535) {
+    echo "❌ Error: Invalid port configuration\n";
+    echo "   Port must be numeric between 1-65535\n";
+    echo "   Current value: " . var_export($port, true) . "\n\n";
+    exit(1);
+}
+
 // Check if pgsql extension is loaded
 if (!extension_loaded('pdo_pgsql')) {
     echo "❌ Error: PDO PostgreSQL extension not installed\n";
@@ -35,7 +44,7 @@ echo "✅ PDO PostgreSQL extension is loaded\n\n";
 // Display configuration
 echo "Configuration:\n";
 echo "  Host: " . $config['HOST'] . "\n";
-echo "  Port: " . ($config['PORT'] ?? '5432') . "\n";
+echo "  Port: " . $port . "\n";
 echo "  Database: " . $config['DB'] . "\n";
 echo "  User: " . $config['USER'] . "\n\n";
 
@@ -43,7 +52,7 @@ echo "  User: " . $config['USER'] . "\n\n";
 echo "Testing connection...\n";
 try {
     $con = new PDO(
-        'pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';port=' . ($config['PORT'] ?? '5432'),
+        'pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';port=' . $port,
         $config['USER'],
         $config['PASS'],
         [

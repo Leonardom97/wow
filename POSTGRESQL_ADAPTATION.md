@@ -19,7 +19,14 @@ $con = new PDO('mysql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';
 
 **After:**
 ```php
-$con = new PDO('pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';port=' . ($config['PORT'] ?? '5432'), ...
+// Validate port to prevent DSN injection
+$port = $config['PORT'] ?? '5432';
+if (!ctype_digit((string)$port) || $port < 1 || $port > 65535) {
+    LogSecurityEvent('INVALID_PORT_CONFIG', 'Port must be numeric between 1-65535');
+    die('Invalid database configuration. Please contact administrator.');
+}
+
+$con = new PDO('pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';port=' . $port, ...
 ```
 
 ### 2. `inc/settings.template.php`
@@ -128,6 +135,10 @@ All security features remain intact:
 - CSRF protection
 - Input sanitization
 - Session security
+
+### 🔒 New Security Enhancements
+- **Port validation**: Prevents DSN injection attacks by validating PORT is numeric (1-65535)
+- **Configuration validation**: Validates database configuration before connection
 
 ### 🔒 PostgreSQL Benefits
 - Better concurrent connection handling
