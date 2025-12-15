@@ -1,55 +1,55 @@
 #!/usr/bin/env php
 <?php
 /**
- * PostgreSQL Connection Test Script
+ * Script de Prueba de Conexión PostgreSQL
  * 
- * This script tests the PostgreSQL database connection
- * Run: php test_pgsql_connection.php
+ * Este script prueba la conexión a la base de datos PostgreSQL
+ * Ejecutar: php test_pgsql_connection.php
  */
 
 echo "=================================\n";
-echo "PostgreSQL Connection Test\n";
+echo "Prueba de Conexión PostgreSQL\n";
 echo "=================================\n\n";
 
-// Check if settings.php exists
+// Verificar si existe settings.php
 if (!file_exists(__DIR__ . '/inc/settings.php')) {
-    echo "❌ Error: inc/settings.php not found\n";
-    echo "   Please copy inc/settings.template.php to inc/settings.php\n";
-    echo "   and configure your database settings.\n\n";
+    echo "❌ Error: inc/settings.php no encontrado\n";
+    echo "   Por favor copia inc/settings.template.php a inc/settings.php\n";
+    echo "   y configura tus ajustes de base de datos.\n\n";
     exit(1);
 }
 
 require_once(__DIR__ . '/inc/settings.php');
 
-// Validate port number to prevent DSN injection
+// Validar número de puerto para prevenir inyección DSN
 $port = $config['PORT'] ?? '5432';
 if (!ctype_digit((string)$port) || $port < 1 || $port > 65535) {
-    echo "❌ Error: Invalid port configuration\n";
-    echo "   Port must be numeric between 1-65535\n";
-    echo "   Current value: " . var_export($port, true) . "\n\n";
+    echo "❌ Error: Configuración de puerto inválida\n";
+    echo "   El puerto debe ser numérico entre 1-65535\n";
+    echo "   Valor actual: " . var_export($port, true) . "\n\n";
     exit(1);
 }
 
-// Check if pgsql extension is loaded
+// Verificar si la extensión pgsql está cargada
 if (!extension_loaded('pdo_pgsql')) {
-    echo "❌ Error: PDO PostgreSQL extension not installed\n";
-    echo "   Install it with:\n";
+    echo "❌ Error: Extensión PDO PostgreSQL no instalada\n";
+    echo "   Instálala con:\n";
     echo "   - Ubuntu/Debian: sudo apt install php-pgsql\n";
     echo "   - CentOS/RHEL: sudo yum install php-pgsql\n\n";
     exit(1);
 }
 
-echo "✅ PDO PostgreSQL extension is loaded\n\n";
+echo "✅ Extensión PDO PostgreSQL está cargada\n\n";
 
-// Display configuration
-echo "Configuration:\n";
+// Mostrar configuración
+echo "Configuración:\n";
 echo "  Host: " . $config['HOST'] . "\n";
-echo "  Port: " . $port . "\n";
-echo "  Database: " . $config['DB'] . "\n";
-echo "  User: " . $config['USER'] . "\n\n";
+echo "  Puerto: " . $port . "\n";
+echo "  Base de datos: " . $config['DB'] . "\n";
+echo "  Usuario: " . $config['USER'] . "\n\n";
 
-// Test connection
-echo "Testing connection...\n";
+// Probar conexión
+echo "Probando conexión...\n";
 try {
     $con = new PDO(
         'pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';port=' . $port,
@@ -61,16 +61,16 @@ try {
         ]
     );
     
-    echo "✅ Connected successfully to PostgreSQL!\n\n";
+    echo "✅ ¡Conectado exitosamente a PostgreSQL!\n\n";
     
-    // Get PostgreSQL version
+    // Obtener versión de PostgreSQL
     $stmt = $con->query('SELECT version()');
     $version = $stmt->fetchColumn();
-    echo "PostgreSQL Version:\n";
+    echo "Versión de PostgreSQL:\n";
     echo "  " . $version . "\n\n";
     
-    // Check if account table exists
-    echo "Checking for 'account' table...\n";
+    // Verificar si existe la tabla account
+    echo "Verificando tabla 'account'...\n";
     $stmt = $con->prepare("SELECT EXISTS (
         SELECT FROM information_schema.tables 
         WHERE table_name = 'account'
@@ -79,9 +79,9 @@ try {
     $tableExists = $stmt->fetchColumn();
     
     if ($tableExists) {
-        echo "✅ Table 'account' exists\n\n";
+        echo "✅ La tabla 'account' existe\n\n";
         
-        // Get table structure
+        // Obtener estructura de tabla
         $stmt = $con->prepare("
             SELECT column_name, data_type, is_nullable, column_default
             FROM information_schema.columns
@@ -91,7 +91,7 @@ try {
         $stmt->execute();
         $columns = $stmt->fetchAll();
         
-        echo "Table structure:\n";
+        echo "Estructura de tabla:\n";
         foreach ($columns as $col) {
             $nullable = $col['is_nullable'] === 'YES' ? 'NULL' : 'NOT NULL';
             $default = $col['column_default'] ? " DEFAULT {$col['column_default']}" : '';
@@ -99,30 +99,30 @@ try {
         }
         echo "\n";
         
-        // Get row count
+        // Obtener conteo de filas
         $stmt = $con->query("SELECT COUNT(*) FROM account");
         $count = $stmt->fetchColumn();
-        echo "Total accounts: {$count}\n\n";
+        echo "Total de cuentas: {$count}\n\n";
         
     } else {
-        echo "⚠️  Warning: Table 'account' does not exist\n";
-        echo "   Run the schema from SETUP_GUIDE.md or POSTGRESQL_MIGRATION.md\n\n";
+        echo "⚠️  Advertencia: La tabla 'account' no existe\n";
+        echo "   Ejecuta el esquema de SETUP_GUIDE.md o POSTGRESQL_MIGRATION.md\n\n";
     }
     
     echo "=================================\n";
-    echo "✅ All tests passed!\n";
+    echo "✅ ¡Todas las pruebas pasaron!\n";
     echo "=================================\n\n";
     
 } catch (PDOException $e) {
-    echo "❌ Connection failed!\n\n";
+    echo "❌ ¡Falló la conexión!\n\n";
     echo "Error: " . $e->getMessage() . "\n\n";
     
-    echo "Troubleshooting:\n";
-    echo "1. Check PostgreSQL is running: sudo systemctl status postgresql\n";
-    echo "2. Verify database credentials in inc/settings.php\n";
-    echo "3. Check PostgreSQL authentication in pg_hba.conf\n";
-    echo "4. Ensure database exists: psql -U postgres -c '\\l'\n";
-    echo "5. See POSTGRESQL_MIGRATION.md for detailed troubleshooting\n\n";
+    echo "Solución de problemas:\n";
+    echo "1. Verificar que PostgreSQL esté ejecutándose: sudo systemctl status postgresql\n";
+    echo "2. Verificar credenciales de base de datos en inc/settings.php\n";
+    echo "3. Verificar autenticación PostgreSQL en pg_hba.conf\n";
+    echo "4. Asegurar que la base de datos existe: psql -U postgres -c '\\l'\n";
+    echo "5. Ver POSTGRESQL_MIGRATION.md para solución de problemas detallada\n\n";
     
     exit(1);
 }
