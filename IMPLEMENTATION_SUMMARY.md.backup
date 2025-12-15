@@ -1,22 +1,22 @@
 # 🎮 WoW Cataclysm - Secure Registration System
-## Resumen Completo de Implementación
+## Complete Implementation Summary
 
 ---
 
-## 📊 Descripción General del Proyecto
+## 📊 Project Overview
 
-Este proyecto transforma una básica World of Warcraft registration page en un **production-ready, enterprise-grade secure system** con protección integral contra todas las vulnerabilidades web principales y un épico Cataclysm-diseño temático.
+This project transforms a basic World of Warcraft registration page into a **production-ready, enterprise-grade secure system** with comprehensive protection against all major web vulnerabilities and an epic Cataclysm-themed design.
 
-### 🎯 Misión Cumplida
+### 🎯 Mission Accomplished
 ✅ **"Invulnerable to all types of malicious access"** - Implemented  
 ✅ **"Best World of Warcraft Cataclysm style"** - Delivered  
 ✅ **"Beautiful and immersive game design"** - Achieved
 
 ---
 
-## 🛡️ Características de Seguridad (A+ Grade)
+## 🛡️ Security Features (A+ Grade)
 
-### 10+ Protecciones Integrales
+### 10+ Comprehensive Protections
 
 #### 1. **SQL Injection Protection** ✅
 - PDO prepared statements with parameter binding
@@ -87,7 +87,7 @@ Este proyecto transforma una básica World of Warcraft registration page en un *
 
 ---
 
-## 🎨 Características de Diseño (Cataclysm Theme)
+## 🎨 Design Features (Cataclysm Theme)
 
 ### Epic Visual Experience
 
@@ -131,7 +131,7 @@ Este proyecto transforma una básica World of Warcraft registration page en un *
 
 ---
 
-## 📁 Estructura de Archivos
+## 📁 File Structure
 
 ```
 wow/
@@ -148,7 +148,7 @@ wow/
 │   ├── db.php               (Secure DB connection - ENHANCED)
 │   ├── functions.php        (Registration logic - REFACTORED)
 │   ├── security.php         (Security utilities - NEW)
-│   ├── settings.php         (Configuración)
+│   ├── settings.php         (Configuration)
 │   └── settings.template.php (Config template - NEW)
 ├── js/
 │   ├── app.js               (Client-side logic - ENHANCED)
@@ -175,7 +175,7 @@ wow/
 
 ### Files Created: 9
 - `inc/security.php` - Security utilities library
-- `inc/settings.template.php` - Configuración template
+- `inc/settings.template.php` - Configuration template
 - `.htaccess` - Apache security rules
 - `.gitignore` - Protect sensitive files
 - `SECURITY_README.md` - Complete documentation
@@ -245,7 +245,7 @@ CheckHoneypot()              // Bot detection
 | Security Headers | ✅ 100% | Comprehensive headers |
 | Rate Limiting | ✅ 100% | DDoS/brute force protection |
 
-### Calidad de Código
+### Code Quality
 
 - **Lines of Security Code**: 300+
 - **Security Functions**: 13
@@ -270,7 +270,7 @@ CheckHoneypot()              // Bot detection
    - Quick setup steps
    - Database configuration
    - Web server setup
-   - Pruebas checklist
+   - Testing checklist
 
 3. **COMPARISON.md** (6.9KB)
    - Before/after comparison
@@ -347,7 +347,7 @@ php -l index.php
 - **Documentation Pages**: 5
 - **Protections Implemented**: 10+
 - **Security Score**: A+
-- **Calidad de Código**: ✅ Validated
+- **Code Quality**: ✅ Validated
 - **Mobile Responsive**: ✅ Yes
 
 ---
@@ -410,7 +410,7 @@ This registration system is now **production-ready** with:
 
 **Security Grade**: A+  
 **User Experience**: Excellent  
-**Calidad de Código**: Professional  
+**Code Quality**: Professional  
 **Documentation**: Comprehensive  
 
 ---

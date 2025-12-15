@@ -1,12 +1,12 @@
-# Guía de Migración a PostgreSQL
+# PostgreSQL Migration Guide
 
-Esta guía explica cómo usar PostgreSQL en lugar de MySQL con tu sistema de registro de WoW.
+This guide explains how to use PostgreSQL instead of MySQL with your WoW registration system.
 
-## Qué Cambió
+## What Changed
 
-El sistema ahora soporta **PostgreSQL** como base de datos principal, manteniendo compatibilidad con MySQL.
+The system now supports **PostgreSQL** as the primary database, while maintaining backward compatibility with MySQL.
 
-### Archivos Modificados
+### Modified Files
 - `inc/db.php` - Database connection now uses PostgreSQL PDO driver
 - `inc/settings.template.php` - Updated with PostgreSQL default configuration
 - `SETUP_GUIDE.md` - Added PostgreSQL schema and instructions
@@ -22,9 +22,9 @@ El sistema ahora soporta **PostgreSQL** como base de datos principal, manteniend
 | Auto Increment | SERIAL | AUTO_INCREMENT |
 | Data Types | VARCHAR, SMALLINT | varchar, tinyint |
 
-## Pasos de Instalación
+## Installation Steps
 
-### 1. Instalar PostgreSQL
+### 1. Install PostgreSQL
 
 #### Ubuntu/Debian
 ```bash
@@ -45,27 +45,27 @@ sudo systemctl enable postgresql
 #### Windows
 Download and install from: https://www.postgresql.org/download/windows/
 
-### 2. Crear Base de Datos y Usuario
+### 2. Create Database and User
 
 ```bash
-# Cambiar al usuario postgres
+# Switch to postgres user
 sudo -u postgres psql
 
-# En la consola PostgreSQL:
+# In PostgreSQL console:
 CREATE DATABASE auth;
 CREATE USER wowuser WITH PASSWORD 'your_password';
 GRANT ALL PRIVILEGES ON DATABASE auth TO wowuser;
 \q
 ```
 
-### 3. Crear Tabla Account
+### 3. Create Account Table
 
-Conectar a tu base de datos:
+Connect to your database:
 ```bash
 psql -U wowuser -d auth
 ```
 
-Ejecutar el esquema:
+Run the schema:
 ```sql
 CREATE TABLE account (
   id SERIAL PRIMARY KEY,
@@ -80,9 +80,9 @@ CREATE INDEX idx_account_username ON account(username);
 CREATE INDEX idx_account_email ON account(email);
 ```
 
-### 4. Configurar Ajustes
+### 4. Configure Settings
 
-Editar `inc/settings.php`:
+Edit `inc/settings.php`:
 ```php
 $config = array(
     'HOST' => 'localhost',
@@ -94,7 +94,7 @@ $config = array(
 );
 ```
 
-### 5. Instalar Extensión PHP PostgreSQL
+### 5. Install PHP PostgreSQL Extension
 
 #### Ubuntu/Debian
 ```bash
@@ -113,7 +113,7 @@ sudo systemctl restart httpd
 php -m | grep pgsql
 ```
 
-### 6. Probar Conexión
+### 6. Test Connection
 
 Create a test file `test_connection.php`:
 ```php
@@ -135,7 +135,7 @@ try {
     echo "✅ Connected successfully to PostgreSQL!\n";
     echo "Database: " . $config['DB'] . "\n";
 } catch(PDOException $e) {
-    echo "❌ Falló la conexión: " . $e->getMessage() . "\n";
+    echo "❌ Connection failed: " . $e->getMessage() . "\n";
 }
 ?>
 ```
@@ -168,13 +168,13 @@ Manually recreate the table structure with PostgreSQL syntax, then import data:
 # Export data only (no schema)
 mysqldump -u root -p auth account --no-create-info --complete-insert > data_only.sql
 
-# Editar data_only.sql to remove MySQL-specific syntax if needed
+# Edit data_only.sql to remove MySQL-specific syntax if needed
 
 # Import to PostgreSQL
 psql -U wowuser -d auth < data_only.sql
 ```
 
-## Solución de Problemas
+## Troubleshooting
 
 ### Connection Failed
 - **Error**: `could not connect to server`
@@ -202,18 +202,18 @@ psql -U wowuser -d auth < data_only.sql
 1. **Create Indexes**: Already included in schema for username and email
 2. **Connection Pooling**: Consider using PgBouncer for high-traffic sites
 3. **Vacuum**: Regularly run `VACUUM ANALYZE` to optimize performance
-4. **Tune Settings**: Editar `postgresql.conf` for production optimization
+4. **Tune Settings**: Edit `postgresql.conf` for production optimization
 
 ## Reverting to MySQL
 
 If you need to revert to MySQL:
 
-1. Editar `inc/db.php` line 8:
+1. Edit `inc/db.php` line 8:
    ```php
    $con = new PDO('mysql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';charset=UTF8',
    ```
 
-2. Editar `inc/settings.php`:
+2. Edit `inc/settings.php`:
    ```php
    $config = array(
        'HOST' => 'localhost',
