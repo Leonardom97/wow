@@ -1,98 +1,98 @@
-# World of Warcraft Cataclysm - Secure Registration System
+# World of Warcraft Cataclysm - Sistema de Registro Seguro
 
-A secure and beautifully designed registration page for World of Warcraft Cataclysm private servers with comprehensive protection against common web attacks.
+Un sistema de registro seguro y bellamente diseñado para servidores privados de World of Warcraft Cataclysm con protección integral contra ataques web comunes.
 
-## Security Features
+## Características de Seguridad
 
-### Protection Against Common Attacks
+### Protección Contra Ataques Comunes
 
-✅ **SQL Injection Protection**
-- PDO prepared statements with parameter binding
-- No direct SQL string concatenation
-- PDO error mode set to exceptions
+✅ **Protección contra Inyección SQL**
+- Declaraciones preparadas PDO con vinculación de parámetros
+- Sin concatenación directa de cadenas SQL
+- Modo de error PDO establecido a excepciones
 
-✅ **XSS (Cross-Site Scripting) Protection**
-- Input sanitization on all user inputs
-- Output encoding using htmlspecialchars with ENT_QUOTES
-- Content Security Policy headers
+✅ **Protección XSS (Cross-Site Scripting)**
+- Sanitización de entrada en todas las entradas de usuario
+- Codificación de salida usando htmlspecialchars con ENT_QUOTES
+- Cabeceras de Content Security Policy
 
-✅ **CSRF (Cross-Site Request Forgery) Protection**
-- CSRF tokens on all forms
-- Token validation on form submission
-- Time-limited tokens (1 hour expiration)
+✅ **Protección CSRF (Cross-Site Request Forgery)**
+- Tokens CSRF en todos los formularios
+- Validación de tokens al enviar formularios
+- Tokens con límite de tiempo (expiración de 1 hora)
 
-✅ **DDoS & Brute Force Protection**
-- Rate limiting (5 attempts per 5 minutes per IP)
-- Session-based throttling
-- IP address tracking
+✅ **Protección contra DDoS y Fuerza Bruta**
+- Limitación de tasa (5 intentos por 5 minutos por IP)
+- Throttling basado en sesión
+- Rastreo de direcciones IP
 
-✅ **Bot Protection**
-- Google reCAPTCHA v2 integration
-- Honeypot field for additional bot detection
-- Client-side and server-side validation
+✅ **Protección contra Bots**
+- Integración de Google reCAPTCHA v2
+- Campo honeypot para detección adicional de bots
+- Validación del lado del cliente y del servidor
 
-✅ **Password Security**
-- Minimum 8 characters required
-- Must contain uppercase, lowercase, and numbers
-- Password strength validation
-- SHA1 hashing (compatible with WoW authentication)
+✅ **Seguridad de Contraseñas**
+- Mínimo 8 caracteres requeridos
+- Debe contener mayúsculas, minúsculas y números
+- Validación de fortaleza de contraseña
+- Hashing SHA1 (compatible con autenticación de WoW)
 
-✅ **Additional Security Measures**
-- Security headers (X-Frame-Options, X-XSS-Protection, etc.)
-- Session security (httponly, secure flags)
-- Session regeneration to prevent fixation
-- Input length validation
-- Email validation with disposable email blocking
-- Secure error handling (no sensitive data exposure)
-- Security event logging
+✅ **Medidas de Seguridad Adicionales**
+- Cabeceras de seguridad (X-Frame-Options, X-XSS-Protection, etc.)
+- Seguridad de sesión (flags httponly, secure)
+- Regeneración de sesión para prevenir fijación
+- Validación de longitud de entrada
+- Validación de correo electrónico con bloqueo de correos desechables
+- Manejo seguro de errores (sin exposición de datos sensibles)
+- Registro de eventos de seguridad
 
-## Design Features
+## Características de Diseño
 
-### Cataclysm-Themed UI
-- Epic World of Warcraft aesthetic
-- Golden glow effects and animations
-- Fire-themed Cataclysm branding
-- Responsive design for all devices
-- Smooth animations and transitions
-- Professional game-inspired interface
+### Interfaz Temática de Cataclysm
+- Estética épica de World of Warcraft
+- Efectos de brillo dorado y animaciones
+- Marca de Cataclysm con tema de fuego
+- Diseño adaptable para todos los dispositivos
+- Animaciones y transiciones suaves
+- Interfaz profesional inspirada en el juego
 
-## Installation
+## Instalación
 
-### Requirements
-- PHP 7.4 or higher
-- MySQL 5.7 or higher
-- Web server (Apache/Nginx)
-- SSL certificate (recommended for production)
+### Requisitos
+- PHP 7.4 o superior
+- MySQL 5.7 o superior
+- Servidor web (Apache/Nginx)
+- Certificado SSL (recomendado para producción)
 
-### Setup Instructions
+### Instrucciones de Configuración
 
-1. **Clone the repository**
+1. **Clonar el repositorio**
    ```bash
    git clone <repository-url>
    cd wow
    ```
 
-2. **Configure database settings**
-   Edit `inc/settings.php` with your database credentials:
+2. **Configurar ajustes de base de datos**
+   Editar `inc/settings.php` con tus credenciales de base de datos:
    ```php
    $config = array(
        'HOST' => 'localhost',
-       'USER' => 'your_db_user',
-       'PASS' => 'your_db_password',
+       'USER' => 'tu_usuario_bd',
+       'PASS' => 'tu_contraseña_bd',
        'DB'   => 'auth',
        'CORE' => '7878'
    );
    ```
 
-3. **Configure Google reCAPTCHA**
-   - Get your reCAPTCHA keys from https://www.google.com/recaptcha/admin
-   - Add them to `inc/settings.php`:
+3. **Configurar Google reCAPTCHA**
+   - Obtener tus claves de reCAPTCHA de https://www.google.com/recaptcha/admin
+   - Agregarlas a `inc/settings.php`:
    ```php
-   define('CAPTCHA_SECRET', 'your_secret_key');
-   define('CAPTCHA_CLIENT_ID', 'your_site_key');
+   define('CAPTCHA_SECRET', 'tu_clave_secreta');
+   define('CAPTCHA_CLIENT_ID', 'tu_clave_del_sitio');
    ```
 
-4. **Set file permissions**
+4. **Establecer permisos de archivos**
    ```bash
    chmod 755 inc/
    chmod 644 inc/*.php
@@ -100,149 +100,149 @@ A secure and beautifully designed registration page for World of Warcraft Catacl
    chmod 755 logs
    ```
 
-5. **Configure your web server**
-   - Point document root to the project directory
-   - Enable mod_rewrite if using Apache
-   - Configure SSL (highly recommended)
+5. **Configurar tu servidor web**
+   - Apuntar la raíz del documento al directorio del proyecto
+   - Habilitar mod_rewrite si usas Apache
+   - Configurar SSL (altamente recomendado)
 
-6. **Update expansion and realm settings**
-   Edit `inc/settings.php`:
+6. **Actualizar configuración de expansión y reino**
+   Editar `inc/settings.php`:
    ```php
    define('EXPANSION', 4); // 4 = Cataclysm
-   define('REALMLIST', 'your-realm.com');
-   define('SUCCESS_MESSAGE', 'Your success message');
+   define('REALMLIST', 'tu-reino.com');
+   define('SUCCESS_MESSAGE', 'Tu mensaje de éxito');
    ```
 
-## Security Best Practices
+## Mejores Prácticas de Seguridad
 
-### For Production Deployment
+### Para Despliegue en Producción
 
-1. **Enable HTTPS**
-   - Get an SSL certificate (Let's Encrypt is free)
-   - Update session settings in `inc/security.php`:
+1. **Habilitar HTTPS**
+   - Obtener un certificado SSL (Let's Encrypt es gratuito)
+   - Actualizar configuración de sesión en `inc/security.php`:
      ```php
      ini_set('session.cookie_secure', 1);
      ```
 
-2. **Secure settings.php**
-   - Keep database credentials secure
-   - Set restrictive file permissions: `chmod 600 inc/settings.php`
-   - Never commit real credentials to version control
+2. **Asegurar settings.php**
+   - Mantener las credenciales de base de datos seguras
+   - Establecer permisos de archivo restrictivos: `chmod 600 inc/settings.php`
+   - Nunca hacer commit de credenciales reales al control de versiones
 
-3. **Monitor security logs**
-   - Check `logs/security.log` regularly
-   - Set up log rotation
-   - Monitor for suspicious activity
+3. **Monitorear registros de seguridad**
+   - Verificar `logs/security.log` regularmente
+   - Configurar rotación de registros
+   - Monitorear actividad sospechosa
 
-4. **Regular Updates**
-   - Keep PHP and MySQL updated
-   - Update dependencies regularly
-   - Review security advisories
+4. **Actualizaciones Regulares**
+   - Mantener PHP y MySQL actualizados
+   - Actualizar dependencias regularmente
+   - Revisar avisos de seguridad
 
-5. **Additional Hardening**
-   - Disable directory listing
-   - Hide PHP version in headers
-   - Implement fail2ban or similar
-   - Use a Web Application Firewall (WAF)
-   - Regular security audits
+5. **Fortalecimiento Adicional**
+   - Deshabilitar listado de directorios
+   - Ocultar versión de PHP en cabeceras
+   - Implementar fail2ban o similar
+   - Usar un Web Application Firewall (WAF)
+   - Auditorías de seguridad regulares
 
-## File Structure
+## Estructura de Archivos
 
 ```
 wow/
-├── css/              # Stylesheets
-│   ├── content.css   # Main styling with Cataclysm theme
+├── css/              # Hojas de estilo
+│   ├── content.css   # Estilo principal con tema Cataclysm
 │   ├── colors.css
 │   ├── fonts.css
 │   ├── main.css
 │   └── ...
-├── inc/              # PHP includes
-│   ├── db.php        # Database connection
-│   ├── functions.php # Registration logic
-│   ├── security.php  # Security utilities
-│   └── settings.php  # Configuration
-├── img/              # Images and assets
-├── js/               # JavaScript files
-├── logs/             # Security logs (auto-created)
-├── index.php         # Main registration page
-└── README.md         # This file
+├── inc/              # Includes PHP
+│   ├── db.php        # Conexión a base de datos
+│   ├── functions.php # Lógica de registro
+│   ├── security.php  # Utilidades de seguridad
+│   └── settings.php  # Configuración
+├── img/              # Imágenes y recursos
+├── js/               # Archivos JavaScript
+├── logs/             # Registros de seguridad (creado automáticamente)
+├── index.php         # Página principal de registro
+└── README.md         # Este archivo
 ```
 
-## Customization
+## Personalización
 
-### Changing Colors
-Edit `css/content.css` to modify the color scheme:
-- Gold/Orange theme: `#FFD700`, `#FF8C00`, `#FF4500`
-- Background gradients
-- Button styles
+### Cambiar Colores
+Editar `css/content.css` para modificar el esquema de colores:
+- Tema Dorado/Naranja: `#FFD700`, `#FF8C00`, `#FF4500`
+- Degradados de fondo
+- Estilos de botones
 
-### Changing Fonts
-The design uses Google Fonts:
-- **Cinzel**: For titles and headings
-- **Spectral SC**: For the Cataclysm subtitle
+### Cambiar Fuentes
+El diseño usa Google Fonts:
+- **Cinzel**: Para títulos y encabezados
+- **Spectral SC**: Para el subtítulo de Cataclysm
 
-Modify in `index.php` `<head>` section.
+Modificar en la sección `<head>` de `index.php`.
 
-### Modifying Validation Rules
-Edit `inc/security.php`:
-- `ValidateUsername()`: Username rules
-- `ValidatePasswordStrength()`: Password requirements
-- `ValidateEmail()`: Email validation
-- `CheckRateLimit()`: Rate limiting parameters
+### Modificar Reglas de Validación
+Editar `inc/security.php`:
+- `ValidateUsername()`: Reglas de usuario
+- `ValidatePasswordStrength()`: Requisitos de contraseña
+- `ValidateEmail()`: Validación de correo electrónico
+- `CheckRateLimit()`: Parámetros de limitación de tasa
 
-## Troubleshooting
+## Solución de Problemas
 
-### reCAPTCHA not working
-- Verify your site key and secret key are correct
-- Check domain is registered with Google reCAPTCHA
-- Ensure JavaScript is enabled
+### reCAPTCHA no funciona
+- Verificar que tu clave del sitio y clave secreta sean correctas
+- Verificar que el dominio esté registrado con Google reCAPTCHA
+- Asegurar que JavaScript esté habilitado
 
-### Rate limiting too strict
-Adjust parameters in `inc/functions.php`:
+### Limitación de tasa demasiado estricta
+Ajustar parámetros en `inc/functions.php`:
 ```php
-CheckRateLimit($ip_address, 5, 300)  // 5 attempts per 300 seconds
+CheckRateLimit($ip_address, 5, 300)  // 5 intentos por 300 segundos
 ```
 
-### Database connection errors
-- Verify MySQL is running
-- Check credentials in `inc/settings.php`
-- Ensure database exists
-- Check user permissions
+### Errores de conexión a base de datos
+- Verificar que MySQL esté ejecutándose
+- Verificar credenciales en `inc/settings.php`
+- Asegurar que la base de datos existe
+- Verificar permisos de usuario
 
-### Logs not being created
-- Ensure `logs/` directory exists
-- Check write permissions: `chmod 755 logs`
+### No se están creando registros
+- Asegurar que el directorio `logs/` existe
+- Verificar permisos de escritura: `chmod 755 logs`
 
-## Security Incident Response
+## Respuesta a Incidentes de Seguridad
 
-If you detect suspicious activity:
-1. Review `logs/security.log`
-2. Check for unauthorized access attempts
-3. Verify database integrity
-4. Update passwords if compromised
-5. Consider implementing additional firewall rules
+Si detectas actividad sospechosa:
+1. Revisar `logs/security.log`
+2. Verificar intentos de acceso no autorizados
+3. Verificar integridad de la base de datos
+4. Actualizar contraseñas si están comprometidas
+5. Considerar implementar reglas de firewall adicionales
 
-## Credits
+## Créditos
 
-- Original design inspiration: World of Warcraft by Blizzard Entertainment
-- Security implementations: Industry-standard best practices
+- Inspiración del diseño original: World of Warcraft por Blizzard Entertainment
+- Implementaciones de seguridad: Mejores prácticas estándar de la industria
 - reCAPTCHA: Google
 
-## License
+## Licencia
 
-This is a fan-made project. World of Warcraft and all related trademarks are © Blizzard Entertainment.
+Este es un proyecto hecho por fans. World of Warcraft y todas las marcas relacionadas son © Blizzard Entertainment.
 
-## Support
+## Soporte
 
-For issues and questions:
-- Check the security logs
-- Review this README
-- Ensure all requirements are met
+Para problemas y preguntas:
+- Verificar los registros de seguridad
+- Revisar este README
+- Asegurar que se cumplan todos los requisitos
 
-## Screenshots
+## Capturas de Pantalla
 
-![Preview](https://puu.sh/xwIms/233d6cc51f.jpg)
+![Vista Previa](https://puu.sh/xwIms/233d6cc51f.jpg)
 
 ---
 
-**Note**: This is a private server registration system. Always comply with Blizzard Entertainment's Terms of Service and local laws.
+**Nota**: Este es un sistema de registro para servidores privados. Siempre cumple con los Términos de Servicio de Blizzard Entertainment y las leyes locales.
