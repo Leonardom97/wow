@@ -100,6 +100,10 @@ function Register()
 			}
 			
 			// Insert new account
+			// NOTE: Using SHA1 hash for WoW TrinityCore compatibility
+			// SHA1 is cryptographically weak by modern standards, but required for game server authentication
+			// The format is: SHA1(UPPERCASE_USERNAME:UPPERCASE_PASSWORD)
+			// This cannot be changed without breaking compatibility with the WoW client/server
 			$stmt = $con->prepare('INSERT INTO account (username, sha_pass_hash, email, last_ip, expansion) 
 				VALUES(:username, :password, :email, :ip, :expansion)');
 			$stmt->execute([

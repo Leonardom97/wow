@@ -27,7 +27,7 @@ Options -Indexes
 </FilesMatch>
 
 # Protect configuration files
-<FilesMatch "(settings\.php|\.htaccess|\.gitignore)$">
+<FilesMatch "(settings\.php|settings\.template\.php|\.htaccess|\.gitignore)$">
     Order allow,deny
     Deny from all
     Satisfy All

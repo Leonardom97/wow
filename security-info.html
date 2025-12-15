@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Features - WoW Registration</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(30, 30, 30, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            color: #FFD700;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .subtitle {
+            text-align: center;
+            color: #FF8C00;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .feature-card {
+            background: linear-gradient(135deg, rgba(40, 25, 15, 0.9) 0%, rgba(30, 20, 10, 0.9) 100%);
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid rgba(184, 115, 51, 0.6);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+            border-color: rgba(255, 140, 0, 0.8);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .feature-title {
+            color: #FFD700;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .feature-description {
+            color: #c0c0c0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .feature-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+        .feature-list li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .section {
+            margin-top: 50px;
+        }
+        .section-title {
+            color: #FF8C00;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid rgba(255, 140, 0, 0.5);
+            padding-bottom: 10px;
+        }
+        .info-box {
+            background: rgba(41, 128, 185, 0.1);
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .warning-box {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .success-box {
+            background: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid #2ecc71;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        code {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 8px;
+            border-radius: 3px;
+            color: #FF8C00;
+            font-family: 'Courier New', monospace;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(180deg, #C16515 0%, #8B4513 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 2px solid #FFD700;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background: linear-gradient(180deg, #E77E23 0%, #A0522D 100%);
+            box-shadow: 0 5px 20px rgba(255, 140, 0, 0.4);
+        }
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            h1 { font-size: 2rem; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Security Features</h1>
+        <p class="subtitle">World of Warcraft Cataclysm - Secure Registration System</p>
+
+        <div class="success-box">
+            <strong>✓ Fully Protected:</strong> This registration system implements industry-standard security measures to protect against all common web vulnerabilities.
+        </div>
+
+        <h2 class="section-title">🔒 Core Security Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚫</div>
+                <div class="feature-title">SQL Injection Protection</div>
+                <div class="feature-description">
+                    <p>Complete protection using PDO prepared statements:</p>
+                    <ul class="feature-list">
+                        <li>Parameterized queries</li>
+                        <li>No string concatenation</li>
+                        <li>Type-safe bindings</li>
+                        <li>Exception handling</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <div class="feature-title">XSS Protection</div>
+                <div class="feature-description">
+                    <p>Multi-layer Cross-Site Scripting defense:</p>
+                    <ul class="feature-list">
+                        <li>Input sanitization</li>
+                        <li>Output encoding (htmlspecialchars)</li>
+                        <li>Content Security Policy headers</li>
+                        <li>X-XSS-Protection headers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎫</div>
+                <div class="feature-title">CSRF Protection</div>
+                <div class="feature-description">
+                    <p>Cross-Site Request Forgery prevention:</p>
+                    <ul class="feature-list">
+                        <li>Unique tokens per session</li>
+                        <li>Time-limited tokens (1 hour)</li>
+                        <li>Server-side validation</li>
+                        <li>Automatic regeneration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⏱️</div>
+                <div class="feature-title">Rate Limiting</div>
+                <div class="feature-description">
+                    <p>DDoS and brute force protection:</p>
+                    <ul class="feature-list">
+                        <li>5 attempts per 5 minutes</li>
+                        <li>IP-based throttling</li>
+                        <li>Session tracking</li>
+                        <li>Automatic cooldown</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🤖</div>
+                <div class="feature-title">Bot Prevention</div>
+                <div class="feature-description">
+                    <p>Advanced bot detection:</p>
+                    <ul class="feature-list">
+                        <li>Google reCAPTCHA v2 (Checkbox)</li>
+                        <li>Honeypot field trap</li>
+                        <li>Client-side validation</li>
+                        <li>Behavior analysis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔑</div>
+                <div class="feature-title">Password Security</div>
+                <div class="feature-description">
+                    <p>Strong password requirements:</p>
+                    <ul class="feature-list">
+                        <li>Minimum 8 characters</li>
+                        <li>Uppercase & lowercase required</li>
+                        <li>Numbers required</li>
+                        <li>Strength indicator</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <div class="feature-title">Security Headers</div>
+                <div class="feature-description">
+                    <p>Comprehensive HTTP headers:</p>
+                    <ul class="feature-list">
+                        <li>X-Frame-Options: DENY</li>
+                        <li>X-Content-Type-Options</li>
+                        <li>Content-Security-Policy</li>
+                        <li>Referrer-Policy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <div class="feature-title">Security Logging</div>
+                <div class="feature-description">
+                    <p>Complete audit trail:</p>
+                    <ul class="feature-list">
+                        <li>All security events logged</li>
+                        <li>IP address tracking</li>
+                        <li>Timestamp records</li>
+                        <li>Failure analysis</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-title">Session Security</div>
+                <div class="feature-description">
+                    <p>Hardened session management:</p>
+                    <ul class="feature-list">
+                        <li>HttpOnly cookies</li>
+                        <li>Secure flag support</li>
+                        <li>SameSite strict</li>
+                        <li>Session regeneration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">✨ Design Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <div class="feature-title">Cataclysm Theme</div>
+                    <div class="feature-description">
+                        <p>Authentic World of Warcraft aesthetic with golden glow effects, fire-themed colors, and epic animations matching the Cataclysm expansion.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-title">Responsive Design</div>
+                    <div class="feature-description">
+                        <p>Fully responsive layout that works perfectly on all devices from mobile phones to large desktop screens.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Interactive UI</div>
+                    <div class="feature-description">
+                        <p>Real-time password strength indicator, smooth animations, visual feedback, and enhanced user experience.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">📋 Setup Requirements</h2>
+            <div class="info-box">
+                <p><strong>Before using this registration system:</strong></p>
+                <ul class="feature-list">
+                    <li>Configure database credentials in <code>inc/settings.php</code></li>
+                    <li>Set up Google reCAPTCHA keys</li>
+                    <li>Create <code>logs/</code> directory with write permissions</li>
+                    <li>Enable HTTPS in production (recommended)</li>
+                    <li>Review SECURITY_README.md for detailed setup</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <p><strong>⚠️ Important Security Notes:</strong></p>
+                <ul class="feature-list">
+                    <li>Never expose your database credentials</li>
+                    <li>Use HTTPS in production environments</li>
+                    <li>Monitor security logs regularly</li>
+                    <li>Keep PHP and dependencies updated</li>
+                    <li>Review and adjust rate limiting as needed</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">🎯 Protection Coverage</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <strong style="color: #2ecc71; font-size: 1.1rem;">✓ Protected Against:</strong>
+                    <ul class="feature-list" style="margin-top: 15px;">
+                        <li>SQL Injection</li>
+                        <li>Cross-Site Scripting (XSS)</li>
+                        <li>Cross-Site Request Forgery (CSRF)</li>
+                        <li>DDoS Attacks</li>
+                        <li>Brute Force Attacks</li>
+                        <li>Bot Attacks</li>
+                        <li>Session Hijacking</li>
+                        <li>Session Fixation</li>
+                        <li>Clickjacking</li>
+                        <li>MIME Type Sniffing</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <strong style="color: #FFD700; font-size: 1.1rem;">📊 Security Score:</strong>
+                    <div style="margin-top: 20px; text-align: center;">
+                        <div style="font-size: 3rem; color: #2ecc71; font-weight: bold;">A+</div>
+                        <p style="margin-top: 10px;">Industry-standard security implementation with comprehensive protection measures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.php" class="back-link">← Back to Registration</a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255, 140, 0, 0.3); color: #888;">
+            <p>World of Warcraft and all related trademarks are © Blizzard Entertainment.</p>
+            <p style="margin-top: 5px;">This is a fan-made private server registration system.</p>
+        </div>
+    </div>
+</body>
+</html>

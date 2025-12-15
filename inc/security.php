@@ -122,11 +122,15 @@ function ValidateEmail($email)
         return false;
     }
     
-    // Additional check for disposable email domains (optional)
+    // Additional check for disposable email domains
+    // Note: This is a basic list. Consider using an external service for comprehensive checking
+    // You can expand this list in inc/settings.php by defining DISPOSABLE_EMAIL_DOMAINS
     $domain = substr(strrchr($email, "@"), 1);
-    $disposable_domains = ['tempmail.com', 'throwaway.email', '10minutemail.com'];
+    $disposable_domains = defined('DISPOSABLE_EMAIL_DOMAINS') 
+        ? DISPOSABLE_EMAIL_DOMAINS 
+        : ['tempmail.com', 'throwaway.email', '10minutemail.com', 'guerrillamail.com'];
     
-    if (in_array($domain, $disposable_domains)) {
+    if (in_array(strtolower($domain), array_map('strtolower', $disposable_domains))) {
         return false;
     }
     
@@ -252,9 +256,12 @@ function LogSecurityEvent($event_type, $details)
 }
 
 // Check for honeypot (bot detection)
+// Returns true if honeypot is valid (empty = human), false if filled (bot detected)
 function CheckHoneypot($honeypot_value)
 {
     // Honeypot field should be empty (hidden from users, but bots fill it)
+    // TRUE = Valid (field is empty, likely human)
+    // FALSE = Invalid (field is filled, likely bot)
     return empty($honeypot_value);
 }
 

@@ -51,7 +51,7 @@ $csrf_token = GenerateCSRFToken();
 			<div class="content-box-content">
 				<form method="POST" id="registrationForm" autocomplete="off">
 					<!-- CSRF Token -->
-					<input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8'); ?>">
+					<input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8'); ?>" autocomplete="off">
 					
 					<!-- Honeypot field (hidden from users, bots will fill it) -->
 					<input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">

@@ -27,4 +27,8 @@ define('CAPTCHA_CLIENT_ID', '');        // Your reCAPTCHA site key
 // Message Settings
 define('SUCCESS_MESSAGE', 'Account created successfully! Download the client and start playing!');
 
+// Optional: Define custom disposable email domains to block (comma-separated)
+// If not defined, a default list will be used
+// define('DISPOSABLE_EMAIL_DOMAINS', ['tempmail.com', 'throwaway.email', '10minutemail.com', 'guerrillamail.com']);
+
 ?>
