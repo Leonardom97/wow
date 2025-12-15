@@ -88,7 +88,7 @@ php -l index.php
 ## 📋 Requirements
 
 - **PHP**: 7.4 or higher (tested on 8.3)
-- **MySQL**: 5.7 or higher
+- **Database**: PostgreSQL 12+ (recommended) or MySQL 5.7+
 - **Web Server**: Apache (with mod_rewrite) or Nginx
 - **SSL Certificate**: Recommended for production
 - **Google reCAPTCHA**: v2 keys required
@@ -155,7 +155,7 @@ This system protects against:
 ## 🔧 Configuration
 
 ### Database Setup
-1. Create MySQL database (typically named `auth`)
+1. Create PostgreSQL (or MySQL) database (typically named `auth`)
 2. Ensure `account` table exists with proper schema
 3. Configure credentials in `inc/settings.php`
 
@@ -192,7 +192,7 @@ See [SETUP_GUIDE.md](SETUP_GUIDE.md) for detailed instructions.
 
 **"Unable to connect to database"**
 - Check credentials in `inc/settings.php`
-- Verify MySQL is running
+- Verify PostgreSQL/MySQL is running
 - Ensure database exists
 
 **"Captcha verification failed"**

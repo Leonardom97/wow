@@ -2,6 +2,23 @@
 
 ## 1. Database Setup
 Create your auth database and ensure it has an `account` table with these columns:
+
+### PostgreSQL Schema
+```sql
+CREATE TABLE account (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR(32) NOT NULL UNIQUE,
+  sha_pass_hash VARCHAR(40) NOT NULL,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  last_ip VARCHAR(15) NOT NULL,
+  expansion SMALLINT NOT NULL DEFAULT 0
+);
+
+CREATE INDEX idx_account_username ON account(username);
+CREATE INDEX idx_account_email ON account(email);
+```
+
+### MySQL Schema (Legacy)
 ```sql
 CREATE TABLE `account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -19,7 +36,9 @@ CREATE TABLE `account` (
 ## 2. Configure Settings
 1. Copy `inc/settings.template.php` to `inc/settings.php`
 2. Edit `inc/settings.php` with your values:
-   - Database credentials (HOST, USER, PASS, DB)
+   - Database credentials (HOST, PORT, USER, PASS, DB)
+     - For PostgreSQL: Default port is 5432, default user is 'postgres'
+     - For MySQL: Default port is 3306, default user is 'root'
    - Google reCAPTCHA keys (get from https://www.google.com/recaptcha/admin)
    - Realmlist address
    - Success message
@@ -107,9 +126,11 @@ add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 
 ### "Unable to connect to database"
 - Check database credentials in `inc/settings.php`
-- Verify MySQL is running
+- Verify PostgreSQL (or MySQL) is running
 - Ensure user has proper permissions
 - Check database exists
+- For PostgreSQL, verify port is 5432 (or custom port if configured)
+- For MySQL, verify port is 3306
 
 ### "Captcha verification failed"
 - Verify reCAPTCHA keys are correct

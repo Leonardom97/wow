@@ -5,10 +5,11 @@
  * Copy this to settings.php and configure with your values
  */
 
-// Database Configuration
+// Database Configuration (PostgreSQL)
 $config = array(
     'HOST' => 'localhost',              // Database host
-    'USER' => 'root',                   // Database username
+    'PORT' => '5432',                   // Database port (default: 5432 for PostgreSQL)
+    'USER' => 'postgres',               // Database username
     'PASS' => '',                       // Database password
     'DB'   => 'auth',                   // Database name (typically 'auth' for TrinityCore)
     'CORE' => '7878'                    // Core version identifier

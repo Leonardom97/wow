@@ -5,7 +5,7 @@ require_once('security.php');
 
 try
 {
-    $con = new PDO('mysql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';charset=UTF8', 
+    $con = new PDO('pgsql:host=' . $config['HOST'] . ';dbname=' . $config['DB'] . ';port=' . ($config['PORT'] ?? '5432'), 
                    $config['USER'], 
                    $config['PASS'],
                    [
